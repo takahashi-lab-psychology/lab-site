@@ -123,7 +123,8 @@ a{color:inherit}
 .pub-meta{font-size:.875rem;color:var(--muted);margin:0;line-height:1.7}
 .pub-meta em{font-style:normal;color:var(--ink)}
 .pub-meta b{font-weight:500;color:var(--ink)}
-.pub-tag{display:inline-block;font-size:.6875rem;color:var(--accent);
+/* バッジ全般（プレプリント表示、イベント開催状況など）で共通利用 */
+.tag{display:inline-block;font-size:.6875rem;color:var(--accent);
   border:1px solid var(--accent);border-radius:2px;padding:0 .4rem;margin-left:.5rem;vertical-align:.08em}
 .pub-links{display:flex;gap:1rem;margin-top:.4rem;font-size:.8125rem}
 .pub-links a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}

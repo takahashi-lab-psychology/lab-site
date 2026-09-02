@@ -28,6 +28,8 @@ const UI = {
   preprint:     { ja:"プレプリント",         en:"Preprint" },
   readPaper:    { ja:"論文を読む",           en:"Read the paper" },
   pdf:          { ja:"PDF",                  en:"PDF" },
+  eventUpcoming:{ ja:"開催予定",             en:"Upcoming" },
+  eventEnded:   { ja:"終了しました",         en:"Completed" },
 
   researchLede: { ja:"現在進めている3つの方向です。どれも独立した課題ですが、根底にある関心は共通しています。",
                   en:"Three directions we are currently pursuing. They stand alone as problems, but the underlying interest is shared." },
@@ -431,15 +433,27 @@ function blockHead(title, href, moreLabel){
 
 function sortedNews(){
   return CONTENT.news
-    .filter(n => t({ ja:n.ja, en:n.en }))
+    .filter(n => t(n.text))
     .slice()
     .sort((a,b) => b.date.localeCompare(a.date));
+}
+
+// eventDate があるものだけ、開催前/開催後のラベルを返す（無ければ null）
+function eventStatus(eventDate){
+  if (!eventDate) return null;
+  const end = new Date(eventDate + "T23:59:59");
+  return end.getTime() >= Date.now() ? UI.eventUpcoming : UI.eventEnded;
 }
 
 function newsItem(n){
   const li = el("li");
   const d = el("span","news-date"); d.textContent = n.date.replace(/-/g,".");
-  const p = el("p"); p.textContent = t({ ja:n.ja, en:n.en });
+  const p = el("p"); p.textContent = t(n.text);
+  const status = eventStatus(n.eventDate);
+  if (status){
+    const tag = el("span","tag"); tag.textContent = t(status);
+    p.append(tag);
+  }
   li.append(d,p);
   return li;
 }
@@ -454,7 +468,7 @@ function pubItem(p){
   const d = el("div","pub");
   const ti = el("p","pub-title"); ti.textContent = p.title;
   if (t(p.note)){
-    const tag = el("span","pub-tag"); tag.textContent = t(p.note);
+    const tag = el("span","tag"); tag.textContent = t(p.note);
     ti.append(tag);
   }
   const me = el("p","pub-meta");
@@ -534,7 +548,8 @@ function render(){
     (page === "home" ? "" : " — " + (page === "privacy" ? (lang === "ja" ? "プライバシーポリシー" : "Privacy Policy") : t(UI[page] || {}))) +
     (lang === "ja" ? " | 金沢大学" : " | Kanazawa University");
 
-  document.querySelector(".wordmark").textContent = t(CONTENT.lab.name);
+  // 左上のロゴは言語に関わらず常に英語表記
+  document.querySelector(".wordmark").textContent = CONTENT.lab.name.en;
   document.getElementById("langToggle").textContent = lang === "ja" ? "English" : "日本語";
   document.querySelectorAll("[data-nav-id]").forEach(a => a.textContent = t(UI[a.dataset.navId]));
 
