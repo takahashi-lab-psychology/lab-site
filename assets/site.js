@@ -30,6 +30,7 @@ const UI = {
   pdf:          { ja:"PDF",                  en:"PDF" },
   eventUpcoming:{ ja:"開催予定",             en:"Upcoming" },
   eventEnded:   { ja:"終了しました",         en:"Completed" },
+  emailNote:    { ja:"[at] を @ に置き換えてお送りください", en:"Please replace [at] with @" },
 
   researchLede: { ja:"現在進めている3つの方向です。どれも独立した課題ですが、根底にある関心は共通しています。",
                   en:"Three directions we are currently pursuing. They stand alone as problems, but the underlying interest is shared." },
@@ -46,6 +47,10 @@ let lang = "ja";
 const t  = o => (o && (o[lang] || o[lang === "ja" ? "en" : "ja"])) || "";
 const tp = o => { const v = o && (o[lang] && o[lang].length ? o[lang] : o[lang === "ja" ? "en" : "ja"]); return v || []; };
 const el = (tag, cls) => { const n = document.createElement(tag); if (cls) n.className = cls; return n; };
+
+// スパム収集対策: 画面表示のときだけ @ を [at] に置き換える（content.js には本物のアドレスを保持）
+const obfuscateEmail = addr => String(addr).replace("@", " [at] ");
+const emailNote = () => { const s = el("span","email-note"); s.textContent = " (" + t(UI.emailNote) + ")"; return s; };
 const page = document.body.dataset.page;
 
 /* ---------- header / footer ---------- */
@@ -82,7 +87,7 @@ function buildChrome(){
   const foot = el("footer","site-foot");
   foot.innerHTML = '<div class="wrap">' +
     '<p id="footName"></p><p id="footRoom"></p><p id="footAddr"></p>' +
-    '<p><a id="footMail" href="#"></a></p>' +
+    '<p><span id="footMail"></span></p>' +
     '<p style="margin-top:1rem"><a id="footPrivacy" href="privacy.html"></a></p></div>';
   document.body.append(foot);
 }
@@ -311,9 +316,8 @@ function buildJoin(main){
 
   const box = el("div","contact-box");
   const c1 = el("p");
-  c1.append(t(UI.contact) + ": ");
-  const a = el("a"); a.href = "mailto:" + CONTENT.lab.email; a.textContent = CONTENT.lab.email;
-  c1.append(a);
+  c1.append(t(UI.contact) + ": " + obfuscateEmail(CONTENT.lab.email));
+  c1.append(emailNote());
   const c2 = el("p"); c2.textContent = t(CONTENT.lab.room) + " / " + t(CONTENT.lab.address);
   const c3 = el("p"); c3.textContent = t(CONTENT.join.note);
   box.append(c1,c2,c3);
@@ -392,8 +396,8 @@ function buildPrivacy(main){
   }
 
   sec(ja ? "お問い合わせ" : "Contact", [
-    ja ? `当サイトに関するお問い合わせは ${CONTENT.lab.email} までお願いします。`
-       : `For questions about this site, please contact ${CONTENT.lab.email}.`
+    ja ? `当サイトに関するお問い合わせは ${obfuscateEmail(CONTENT.lab.email)} までお願いします（${t(UI.emailNote)}）。`
+       : `For questions about this site, please contact ${obfuscateEmail(CONTENT.lab.email)} (${t(UI.emailNote)}).`
   ]);
 
   // 大学の上位規程へのリンク
@@ -528,15 +532,20 @@ function memberCard(m){
   const add = (href,label) => {
     if (!href) return;
     const a = el("a");
-    a.href = label === "Email" ? "mailto:" + href : href;
-    a.textContent = label;
-    if (label !== "Email"){ a.rel = "noopener"; a.target = "_blank"; }
+    a.href = href; a.textContent = label;
+    a.rel = "noopener"; a.target = "_blank";
     links.append(a);
   };
   add(m.links.scholar,"Scholar");
   add(m.links.orcid,"ORCID");
-  add(m.links.email,"Email");
   if (links.children.length) d.append(links);
+
+  // メールはスパム収集対策のため mailto にせず、難読化してプレーンテキストで表示
+  if (m.links.email){
+    const p = el("p","member-email");
+    p.append(obfuscateEmail(m.links.email), emailNote());
+    d.append(p);
+  }
   return d;
 }
 
@@ -567,8 +576,8 @@ function render(){
   document.getElementById("footAddr").textContent = t(CONTENT.lab.address);
   document.getElementById("footPrivacy").textContent = lang === "ja" ? "プライバシーポリシー" : "Privacy Policy";
   const fm = document.getElementById("footMail");
-  fm.textContent = CONTENT.lab.email;
-  fm.href = "mailto:" + CONTENT.lab.email;
+  fm.textContent = "";
+  fm.append(obfuscateEmail(CONTENT.lab.email), emailNote());
 }
 
 function showError(err){

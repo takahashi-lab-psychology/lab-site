@@ -143,6 +143,7 @@ a{color:inherit}
 .member-links{display:flex;flex-wrap:wrap;gap:.75rem;font-size:.75rem}
 .member-links a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
 .member-links a:hover{border-bottom-color:var(--accent)}
+.member-email{font-size:.75rem;margin:.5rem 0 0}
 
 .alumni-list{list-style:none;margin:0;padding:0;max-width:46rem}
 .alumni-list li{display:grid;grid-template-columns:4.5rem 1fr;gap:1.5rem;
@@ -170,6 +171,9 @@ a{color:inherit}
 .contact-box p{margin:0 0 .5rem;font-size:.9375rem}
 .contact-box p:last-child{margin-bottom:0;font-size:.8125rem;color:var(--muted)}
 .contact-box a{color:var(--accent);text-decoration:none}
+
+/* メールアドレス併記の注記（スパム収集対策で mailto を使わない箇所） */
+.email-note{color:var(--muted);font-size:.8125rem}
 
 /* ---------- footer ---------- */
 .site-foot{padding-block:2.75rem;font-size:.8125rem;color:var(--muted);border-top:1px solid var(--rule)}
