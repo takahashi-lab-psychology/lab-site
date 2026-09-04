@@ -210,7 +210,7 @@ const CONTENT = {
       name:  { ja:"髙橋 芳雄", en:"Michio Takahashi" },
       role:  { ja:"准教授", en:"Associate Professor" },
       bio:   { ja:"", en:"" },   // ← 経歴を載せる場合はここに
-      photo: "",
+      photo: "images/takahashi.jpg",
       links: {
         scholar: { ja:"https://scholar.google.co.jp/citations?user=9L55hMEAAAAJ&hl=ja",
                    en:"https://scholar.google.co.jp/citations?user=9L55hMEAAAAJ&hl=en" },
