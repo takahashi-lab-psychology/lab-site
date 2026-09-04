@@ -20,6 +20,7 @@ const UI = {
 
   moreNews:     { ja:"お知らせをすべて見る", en:"All news" },
   moreResearch: { ja:"研究内容をすべて見る", en:"All research" },
+  moreJoin:     { ja:"募集の詳細を見る",     en:"Full details" },
   joinCta:      { ja:"募集について",         en:"Positions available" },
   skip:         { ja:"本文へ移動",           en:"Skip to content" },
   currentMembers:{ ja:"現メンバー",          en:"Current members" },
@@ -130,6 +131,25 @@ function buildHome(main){
     b.append(w); main.append(b);
   }
 
+  // 募集 — ニュースとは別の常設ブロック（ニュースの下・研究内容の上に固定表示）
+  const cb = el("div","block");
+  const cw = el("div","wrap");
+  cw.append(blockHead(t(UI.join), "join.html", t(UI.moreJoin)));
+  const cz = el("div","teasers");
+  CONTENT.join.homeItems.forEach(item => {
+    const a = el("a","teaser"); a.href = "join.html";
+    const h = el("h3"); h.textContent = t(item.title);
+    const s = el("p");  s.textContent = t(item.body);
+    a.append(h,s); cz.append(a);
+  });
+  cw.append(cz); cb.append(cw); main.append(cb);
+
+  const jb = el("div","join-band");
+  const jw = el("div","wrap");
+  const jp = el("p"); jp.textContent = t(CONTENT.join.lead);
+  const ja = el("a","join-cta"); ja.href = "join.html"; ja.textContent = t(UI.joinCta);
+  jw.append(jp, ja); jb.append(jw); main.append(jb);
+
   const rb = el("div","block");
   const rw = el("div","wrap");
   rw.append(blockHead(t(UI.research), "research.html", t(UI.moreResearch)));
@@ -141,12 +161,6 @@ function buildHome(main){
     a.append(h,s); tz.append(a);
   });
   rw.append(tz); rb.append(rw); main.append(rb);
-
-  const jb = el("div","join-band");
-  const jw = el("div","wrap");
-  const jp = el("p"); jp.textContent = t(CONTENT.join.lead);
-  const ja = el("a","join-cta"); ja.href = "join.html"; ja.textContent = t(UI.joinCta);
-  jw.append(jp, ja); jb.append(jw); main.append(jb);
 }
 
 function buildNews(main){

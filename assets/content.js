@@ -251,6 +251,25 @@ const CONTENT = {
       en:"The lab started in 2026. How we work, and how we engage with schools and communities, is still being shaped — you would be shaping it with us."
     },
 
+    /* トップページの「募集」ブロック用。2項目に絞った短い誘導文で、
+       詳しい内容は positions（join.html側）に委ねます。 */
+    homeItems: [
+      {
+        title:{ ja:"大学院生・ポスドク（学振PD）", en:"Graduate students & postdocs (JSPS PD)" },
+        body: {
+          ja:"大学院進学を考えている方、ポスドクとして研究を進めたい方を歓迎します。研究テーマや進学の相談は随時受け付けていますので、まだ具体的に決まっていない段階でも気軽にご連絡ください。",
+          en:"We welcome prospective graduate students and postdoctoral researchers. Feel free to get in touch at any time to discuss research topics or admissions, even if your plans are still taking shape."
+        }
+      },
+      {
+        title:{ ja:"卒業研究を希望する学生へ", en:"For undergraduates considering a thesis project" },
+        body: {
+          ja:"心理学プログラムに所属する学生であれば、学年を問わずいつでも歓迎します。興味があれば早い段階から研究室で研究を進めることも可能です。テーマが決まっていなくても、まずは気軽に相談に来てください。",
+          en:"Students enrolled in the Psychology Program are welcome to join at any stage, regardless of year. If you are interested, you can start taking part in research early on. Come and talk with us even if you have not settled on a thesis topic yet."
+        }
+      }
+    ],
+
     positions: [
       {
         title:{ ja:"大学院生（博士前期・後期課程）", en:"Graduate students (MSc / PhD)" },
