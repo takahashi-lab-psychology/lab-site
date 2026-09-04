@@ -73,6 +73,9 @@ const CONTENT = {
     email:   "takahashi-psy@staff.kanazawa-u.ac.jp",
     address: { ja:"角間キャンパス", en:"Kakuma Campus" },
 
+    // フッターにだけ表示する詳しい所在地（郵便番号つき）
+    postalAddress: { ja:"〒920-1192 石川県金沢市角間町", en:"Kakuma-machi, Kanazawa, Ishikawa 920-1192, Japan" },
+
     // ▼ 部屋番号が分かりしだい書き換えてください（不要なら "" に）
     room: { ja:"", en:"" }
   },
@@ -88,17 +91,21 @@ const CONTENT = {
        つけてください。つけると、その日までは「開催予定」、
        過ぎると「終了しました」の表示が自動で付きます。
        イベントでないお知らせにはつけないでください（何も表示されません）。
+     ・url は参考リンクがあるときだけ付けてください。本文の下に
+       「参考URL」として別行で表示されます。不要なら書かなくて構いません。
      ------------------------------------------------------------------ */
   news: [
     { date:"2026-01-01",
       text:{ ja:"髙橋芳雄が金沢大学人間社会研究域人文学系に着任しました。",
              en:"Michio Takahashi joined the Faculty of Humanities, Institute of Human and Social Sciences, Kanazawa University." } },
     { date:"2026-08-25",
-      text:{ ja:"コハツWEBに髙橋准教授のインタビュー記事が掲載されました（web.kohatsu.org/26_017-1/）。子どものネット利用について、「我慢する力」よりも「やるべきことに向かう力」が鍵になるという研究知見をもとに、保護者が気をつけるべき点を話しました。",
-             en:"Prof. Takahashi was interviewed by Kohatsu WEB on children's internet use, discussing why the ability to start what needs doing matters more than the ability to resist temptation, and what parents should keep in mind." } },
+      text:{ ja:"コハツWEBに髙橋准教授のインタビュー記事が掲載されました。子どものネット利用について、「我慢する力」よりも「やるべきことに向かう力」が鍵になるという研究知見をもとに、保護者が気をつけるべき点を話しました。",
+             en:"Prof. Takahashi was interviewed by Kohatsu WEB on children's internet use, discussing why the ability to start what needs doing matters more than the ability to resist temptation, and what parents should keep in mind." },
+      url: "https://web.kohatsu.org/26_017-1/" },
     { date:"2026-09-13", eventDate:"2026-09-13",
-      text:{ ja:"オンラインセミナー「ネット依存解消は子どもの『やる気スイッチ』がカギ！」に登壇します（web.kohatsu.org/20260817-2/）。子どもの発達科学研究所主催の無料オンラインセミナーで、ネット依存の背景にあるメカニズムについて最新の研究結果をお話しします。9月13日（日）14:00〜15:15、Zoom開催、参加無料・事前申込制です。",
-             en:"Prof. Takahashi will speak at a free online seminar hosted by the Research Institute for Child Development and Education (web.kohatsu.org/20260817-2/), presenting recent findings on the mechanisms behind children's problematic internet use. Sunday 13 September, 14:00-15:15 JST, held on Zoom. Free to attend; registration required." } }
+      text:{ ja:"オンラインセミナー「ネット依存解消は子どもの『やる気スイッチ』がカギ！」に登壇します。子どもの発達科学研究所主催の無料オンラインセミナーで、ネット依存の背景にあるメカニズムについて最新の研究結果をお話しします。9月13日（日）14:00〜15:15、Zoom開催、参加無料・事前申込制です。",
+             en:"Prof. Takahashi will speak at a free online seminar hosted by the Research Institute for Child Development and Education, presenting recent findings on the mechanisms behind children's problematic internet use. Sunday 13 September, 14:00-15:15 JST, held on Zoom. Free to attend; registration required." },
+      url: "https://web.kohatsu.org/20260817-2/" }
   ],
 
 

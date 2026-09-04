@@ -30,6 +30,7 @@ const UI = {
   pdf:          { ja:"PDF",                  en:"PDF" },
   eventUpcoming:{ ja:"開催予定",             en:"Upcoming" },
   eventEnded:   { ja:"終了しました",         en:"Completed" },
+  newsUrl:      { ja:"参考URL",              en:"Reference" },
   emailNote:    { ja:"[at] を @ に置き換えてお送りください", en:"Please replace [at] with @" },
 
   researchLede: { ja:"現在進めている3つの方向です。どれも独立した課題ですが、根底にある関心は共通しています。",
@@ -86,7 +87,7 @@ function buildChrome(){
 
   const foot = el("footer","site-foot");
   foot.innerHTML = '<div class="wrap">' +
-    '<p id="footName"></p><p id="footRoom"></p><p id="footAddr"></p>' +
+    '<p id="footName"></p><p id="footRoom"></p><p id="footAddr"></p><p id="footPostal"></p>' +
     '<p><span id="footMail"></span></p>' +
     '<p style="margin-top:1rem"><a id="footPrivacy" href="privacy.html"></a></p></div>';
   document.body.append(foot);
@@ -108,11 +109,7 @@ function buildHome(main){
   const hero = el("div","hero wrap");
   const h1 = el("h1"); h1.textContent = t(CONTENT.lab.tagline);
   const ip = el("p");  ip.textContent = t(CONTENT.lab.intro);
-  const meta = el("div","hero-meta");
-  [t(CONTENT.lab.affiliation), t(CONTENT.lab.address)].forEach(s => {
-    const sp = el("span"); sp.textContent = s; meta.append(sp);
-  });
-  hero.append(h1, ip, meta);
+  hero.append(h1, ip);
   main.append(hero);
 
   // news — 新しい順に、期間内のものだけ、指定件数まで
@@ -461,6 +458,14 @@ function newsItem(n){
     p.append(tag);
   }
   li.append(d,p);
+  if (n.url){
+    const up = el("p","news-url");
+    up.append(t(UI.newsUrl) + ": ");
+    const a = el("a"); a.href = n.url; a.textContent = n.url;
+    a.target = "_blank"; a.rel = "noopener";
+    up.append(a);
+    li.append(up);
+  }
   return li;
 }
 
@@ -573,12 +578,14 @@ function render(){
      pubs:buildPubs, members:buildMembers, join:buildJoin,
      privacy:buildPrivacy }[page] || buildHome)(main);
 
-  document.getElementById("footName").textContent = t(CONTENT.lab.name) + " — " + t(CONTENT.lab.affiliation);
+  document.getElementById("footName").textContent = t(CONTENT.lab.name);
   const footRoom = document.getElementById("footRoom");
   const roomText = t(CONTENT.lab.room);
   footRoom.textContent = roomText;
   footRoom.hidden = !roomText;
-  document.getElementById("footAddr").textContent = t(CONTENT.lab.address);
+  document.getElementById("footAddr").textContent =
+    t(CONTENT.lab.affiliation) + (lang === "ja" ? " " : ", ") + t(CONTENT.lab.address);
+  document.getElementById("footPostal").textContent = t(CONTENT.lab.postalAddress);
   document.getElementById("footPrivacy").textContent = lang === "ja" ? "プライバシーポリシー" : "Privacy Policy";
   const fm = document.getElementById("footMail");
   fm.textContent = "";
