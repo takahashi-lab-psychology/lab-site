@@ -202,6 +202,8 @@ const CONTENT = {
      6. メンバー
      photo は "images/takahashi.jpg" のように。"" なら頭文字が入ります。
      使わないリンクは "" にしておけば表示されません。
+     links の各URLは、言語で行き先が変わるものだけ { ja, en } の形にします
+     （変わらないもの・言語別ページがないものは、ORCIDのように文字列のままで構いません）。
      ------------------------------------------------------------------ */
   members: [
     {
@@ -210,8 +212,13 @@ const CONTENT = {
       bio:   { ja:"", en:"" },   // ← 経歴を載せる場合はここに
       photo: "",
       links: {
-        scholar: "https://scholar.google.co.jp/citations?user=9L55hMEAAAAJ&hl=ja",
+        scholar: { ja:"https://scholar.google.co.jp/citations?user=9L55hMEAAAAJ&hl=ja",
+                   en:"https://scholar.google.co.jp/citations?user=9L55hMEAAAAJ&hl=en" },
         orcid:   "https://orcid.org/0000-0002-7151-1364",
+        kaken:   { ja:"https://nrid.nii.ac.jp/ja/nrid/1000070760891/",
+                   en:"https://nrid.nii.ac.jp/en/nrid/1000070760891/" },
+        researchmap: { ja:"https://researchmap.jp/takahashi_psy/?lang=japanese",
+                       en:"https://researchmap.jp/takahashi_psy/?lang=english" },
         email:   "takahashi-psy@staff.kanazawa-u.ac.jp"
       }
     }
@@ -222,7 +229,7 @@ const CONTENT = {
       role:  { ja:"博士前期課程 1年", en:"MSc student, 1st year" },
       bio:   { ja:"", en:"" },
       photo: "",
-      links: { scholar:"", orcid:"", email:"" }
+      links: { scholar:"", orcid:"", kaken:"", researchmap:"", email:"" }
     }
     */
   ],

@@ -25,6 +25,10 @@ const UI = {
   currentMembers:{ ja:"現メンバー",          en:"Current members" },
   alumni:       { ja:"卒業生・修了生",       en:"Alumni" },
   contact:      { ja:"連絡先",               en:"Contact" },
+  linkScholar:  { ja:"Scholar",              en:"Scholar" },
+  linkOrcid:    { ja:"ORCID",                en:"ORCID" },
+  linkKaken:    { ja:"KAKEN",                en:"KAKEN" },
+  linkResearchmap:{ ja:"researchmap",        en:"researchmap" },
   preprint:     { ja:"プレプリント",         en:"Preprint" },
   readPaper:    { ja:"論文を読む",           en:"Read the paper" },
   pdf:          { ja:"PDF",                  en:"PDF" },
@@ -554,14 +558,18 @@ function memberCard(m){
 
   const links = el("div","member-links");
   const add = (href,label) => {
-    if (!href) return;
+    // href は言語で行き先が変わらないものは文字列、変わるものは { ja, en } の形
+    const url = typeof href === "string" ? href : t(href);
+    if (!url) return;
     const a = el("a");
-    a.href = href; a.textContent = label;
+    a.href = url; a.textContent = label;
     a.rel = "noopener"; a.target = "_blank";
     links.append(a);
   };
-  add(m.links.scholar,"Scholar");
-  add(m.links.orcid,"ORCID");
+  add(m.links.scholar, t(UI.linkScholar));
+  add(m.links.orcid, t(UI.linkOrcid));
+  add(m.links.kaken, t(UI.linkKaken));
+  add(m.links.researchmap, t(UI.linkResearchmap));
   if (links.children.length) d.append(links);
 
   // メールはスパム収集対策のため mailto にせず、難読化してプレーンテキストで表示
