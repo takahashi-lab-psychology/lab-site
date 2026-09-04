@@ -71,10 +71,10 @@ const CONTENT = {
     },
 
     email:   "takahashi-psy@staff.kanazawa-u.ac.jp",
-    address: { ja:"〒920-1192 石川県金沢市角間町", en:"Kakuma-machi, Kanazawa, Ishikawa 920-1192, Japan" },
+    address: { ja:"角間キャンパス", en:"Kakuma Campus" },
 
     // ▼ 部屋番号が分かりしだい書き換えてください（不要なら "" に）
-    room: { ja:"角間キャンパス ○○棟 ○○室", en:"Kakuma Campus, Room ○○" }
+    room: { ja:"", en:"" }
   },
 
 
@@ -203,7 +203,7 @@ const CONTENT = {
       bio:   { ja:"", en:"" },   // ← 経歴を載せる場合はここに
       photo: "",
       links: {
-        scholar: "",
+        scholar: "https://scholar.google.co.jp/citations?user=9L55hMEAAAAJ&hl=ja",
         orcid:   "https://orcid.org/0000-0002-7151-1364",
         email:   "takahashi-psy@staff.kanazawa-u.ac.jp"
       }
@@ -246,11 +246,6 @@ const CONTENT = {
      ▼ 文章は下書きです。受け入れ方針に合わせて書き直してください。
      ------------------------------------------------------------------ */
   join: {
-    lead: {
-      ja:"2026年に始まったばかりの研究室です。研究の進め方も現場との関わり方も、これから一緒に作っていく段階にあります。",
-      en:"The lab started in 2026. How we work, and how we engage with schools and communities, is still being shaped — you would be shaping it with us."
-    },
-
     /* トップページの「募集」ブロック用。2項目に絞った短い誘導文で、
        詳しい内容は positions（join.html側）に委ねます。 */
     homeItems: [

@@ -306,11 +306,6 @@ function buildJoin(main){
   main.append(pageHead(t(UI.join), t(UI.joinLede)));
   const w = el("div","wrap");
 
-  const lead = el("p");
-  lead.style.cssText = "font-family:var(--serif);font-size:1.25rem;line-height:1.65;max-width:32ch;margin:0 0 2.75rem";
-  lead.textContent = t(CONTENT.join.lead);
-  w.append(lead);
-
   const list = el("div","positions");
   CONTENT.join.positions.forEach(pos => {
     const d = el("div","position");
@@ -325,7 +320,7 @@ function buildJoin(main){
   const c1 = el("p");
   c1.append(t(UI.contact) + ": " + obfuscateEmail(CONTENT.lab.email));
   c1.append(emailNote());
-  const c2 = el("p"); c2.textContent = t(CONTENT.lab.room) + " / " + t(CONTENT.lab.address);
+  const c2 = el("p"); c2.textContent = [t(CONTENT.lab.room), t(CONTENT.lab.address)].filter(Boolean).join(" / ");
   const c3 = el("p"); c3.textContent = t(CONTENT.join.note);
   box.append(c1,c2,c3);
   w.append(box);
@@ -579,7 +574,10 @@ function render(){
      privacy:buildPrivacy }[page] || buildHome)(main);
 
   document.getElementById("footName").textContent = t(CONTENT.lab.name) + " — " + t(CONTENT.lab.affiliation);
-  document.getElementById("footRoom").textContent = t(CONTENT.lab.room);
+  const footRoom = document.getElementById("footRoom");
+  const roomText = t(CONTENT.lab.room);
+  footRoom.textContent = roomText;
+  footRoom.hidden = !roomText;
   document.getElementById("footAddr").textContent = t(CONTENT.lab.address);
   document.getElementById("footPrivacy").textContent = lang === "ja" ? "プライバシーポリシー" : "Privacy Policy";
   const fm = document.getElementById("footMail");
