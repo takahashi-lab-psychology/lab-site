@@ -21,7 +21,6 @@ const UI = {
   moreNews:     { ja:"お知らせをすべて見る", en:"All news" },
   moreResearch: { ja:"研究内容をすべて見る", en:"All research" },
   moreJoin:     { ja:"募集の詳細を見る",     en:"Full details" },
-  joinCta:      { ja:"募集について",         en:"Positions available" },
   skip:         { ja:"本文へ移動",           en:"Skip to content" },
   currentMembers:{ ja:"現メンバー",          en:"Current members" },
   alumni:       { ja:"卒業生・修了生",       en:"Alumni" },
@@ -143,12 +142,6 @@ function buildHome(main){
     a.append(h,s); cz.append(a);
   });
   cw.append(cz); cb.append(cw); main.append(cb);
-
-  const jb = el("div","join-band");
-  const jw = el("div","wrap");
-  const jp = el("p"); jp.textContent = t(CONTENT.join.lead);
-  const ja = el("a","join-cta"); ja.href = "join.html"; ja.textContent = t(UI.joinCta);
-  jw.append(jp, ja); jb.append(jw); main.append(jb);
 
   const rb = el("div","block");
   const rw = el("div","wrap");

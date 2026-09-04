@@ -90,9 +90,9 @@ const CONTENT = {
        イベントでないお知らせにはつけないでください（何も表示されません）。
      ------------------------------------------------------------------ */
   news: [
-    { date:"2026-04-01",
-      text:{ ja:"研究室を開設しました。大学院生・学部生を募集しています。",
-             en:"The lab opened. We are recruiting graduate and undergraduate students." } },
+    { date:"2026-01-01",
+      text:{ ja:"髙橋芳雄が金沢大学人間社会研究域人文学系に着任しました。",
+             en:"Michio Takahashi joined the Faculty of Humanities, Institute of Human and Social Sciences, Kanazawa University." } },
     { date:"2026-08-25",
       text:{ ja:"コハツWEBに髙橋准教授のインタビュー記事が掲載されました（web.kohatsu.org/26_017-1/）。子どものネット利用について、「我慢する力」よりも「やるべきことに向かう力」が鍵になるという研究知見をもとに、保護者が気をつけるべき点を話しました。",
              en:"Prof. Takahashi was interviewed by Kohatsu WEB on children's internet use, discussing why the ability to start what needs doing matters more than the ability to resist temptation, and what parents should keep in mind." } },

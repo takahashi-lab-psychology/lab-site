@@ -153,13 +153,6 @@ a{color:inherit}
 .alumni-list span.next{color:var(--muted)}
 
 /* ---------- join ---------- */
-.join-band{background:var(--accent);color:#fff;padding-block:clamp(3.5rem,8vw,5rem)}
-.join-band p{font-family:var(--serif);font-size:clamp(1.1875rem,2.4vw,1.625rem);
-  line-height:1.6;max-width:30ch;margin:0 0 2rem}
-.join-cta{display:inline-block;background:#fff;color:var(--accent-deep);font-weight:500;
-  font-size:.9375rem;text-decoration:none;padding:.8rem 1.65rem;border-radius:3px;transition:transform .15s}
-.join-cta:hover{transform:translateY(-2px)}
-
 .positions{display:grid;gap:0;max-width:46rem}
 .position{padding-block:clamp(2rem,4vw,2.75rem);border-top:1px solid var(--rule)}
 .position:first-child{border-top:none;padding-top:0}
