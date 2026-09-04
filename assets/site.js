@@ -107,7 +107,24 @@ function pageHead(title, lede){
 
 function buildHome(main){
   const hero = el("div","hero wrap");
-  const h1 = el("h1"); h1.textContent = t(CONTENT.lab.tagline);
+  const h1 = el("h1");
+  // 読点（、）を含む文（日本語）だけ、読点の直後にのみ改行してよいことにする。
+  // それ以外の位置では折り返さないので、狭い画面でも不自然な位置で改行しない。
+  // 読点を含まない文（英語など）はそのまま普通に折り返す。
+  const tagline = t(CONTENT.lab.tagline);
+  const taglineParts = tagline.split("、");
+  if (taglineParts.length > 1){
+    taglineParts.forEach((part, i) => {
+      const isLast = i === taglineParts.length - 1;
+      const span = el("span");
+      span.style.whiteSpace = "nowrap";
+      span.textContent = isLast ? part : part + "、";
+      h1.append(span);
+      if (!isLast) h1.append(document.createElement("wbr"));
+    });
+  } else {
+    h1.textContent = tagline;
+  }
   const ip = el("p");  ip.textContent = t(CONTENT.lab.intro);
   hero.append(h1, ip);
   main.append(hero);

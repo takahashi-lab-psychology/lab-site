@@ -61,8 +61,8 @@ const CONTENT = {
     },
 
     tagline: {
-      ja:"子どもの育ちを、学校と地域のなかで捉える。",
-      en:"Understanding children's development within schools and communities."
+      ja:"子どものこころを、科学でとらえ、社会で支える。",
+      en:"Understanding children's minds through science, and supporting them through society."
     },
 
     intro: {
