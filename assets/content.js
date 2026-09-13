@@ -105,7 +105,11 @@ const CONTENT = {
     { date:"2026-09-13", eventDate:"2026-09-13",
       text:{ ja:"オンラインセミナー「ネット依存解消は子どもの『やる気スイッチ』がカギ！」に登壇します。子どもの発達科学研究所主催の無料オンラインセミナーで、ネット依存の背景にあるメカニズムについて最新の研究結果をお話しします。9月13日（日）14:00〜15:15、Zoom開催、参加無料・事前申込制です。",
              en:"Prof. Takahashi will speak at a free online seminar hosted by the Research Institute for Child Development and Education, presenting recent findings on the mechanisms behind children's problematic internet use. Sunday 13 September, 14:00-15:15 JST, held on Zoom. Free to attend; registration required." },
-      url: "https://web.kohatsu.org/20260817-2/" }
+      url: "https://web.kohatsu.org/20260817-2/" },
+    { date:"2026-09-04",
+      text:{ ja:"共著論文が BMC Psychology に掲載されました。小中高校生18,950名の回答をもとに、不登校に関連する困りごとのパターンを6つの類型に分類し、それぞれで強みや楽しみの経験がどう異なるかを検討したものです。オープンアクセスで公開されています。",
+             en:"A co-authored paper has been published in BMC Psychology. Drawing on responses from 18,950 students, the study identifies six profiles of distressing experiences associated with school attendance problems and examines how self-perceived strengths and positive experiences differ across them. The article is open access." },
+      url: "https://doi.org/10.1186/s40359-026-05520-3" }
   ],
 
 
