@@ -111,8 +111,8 @@ const CONTENT = {
              en:"Prof. Takahashi will speak at a free online seminar hosted by the Research Institute for Child Development and Education, presenting recent findings on the mechanisms behind children's problematic internet use. Sunday 13 September, 14:00-15:15 JST, held on Zoom. Free to attend; registration required." },
       url: "https://web.kohatsu.org/20260817-2/" },
     { date:"2026-09-13",
-      text:{ ja:"共著論文が BMC Psychology に9月4日付で掲載されました。小中高校生18,950名の回答をもとに、不登校に関連する困りごとのパターンを6つの類型に分類し、それぞれで強みや楽しみの経験がどう異なるかを検討したものです。オープンアクセスで公開されています。",
-             en:"A co-authored paper was published in BMC Psychology on 4 September. Drawing on responses from 18,950 students, the study identifies six profiles of distressing experiences associated with school attendance problems and examines how self-perceived strengths and positive experiences differ across them. The article is open access." },
+      text:{ ja:"大阪大学・子どもの発達科学研究所との共同研究による論文が BMC Psychology に9月4日付で掲載されました。小中高校生18,950名の回答を分析し、不登校に関連する困りごとには6つの類型があること、そして困難が重なり強みや楽しみの経験が少ない子どもほど欠席が多いことが明らかになりました。",
+             en:"A paper from a collaborative study with The University of Osaka and the Institute of Child Developmental Science Research was published in BMC Psychology on 4 September. Analysing responses from 18,950 students, the study identified six profiles of distressing experiences related to school attendance problems, and found that absenteeism was highest among students facing multiple difficulties together with fewer strengths and positive experiences." },
       url: "https://doi.org/10.1186/s40359-026-05520-3" }
   ],
 
